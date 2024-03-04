@@ -2,7 +2,8 @@
 
 - **reproduce**: Open the playground and add some nodes. After a while, the page will become increasingly slower, regardless of the operation you perform.
 - **video**:
-![[before-performance-issue.mp4]]
+![d](../assets/before-performance-issue.mp4)
+
 
 ## How to debug a performance issue
 
@@ -16,15 +17,19 @@
 useWhyDidYouUpdate('Workbench', { nodes, edges, onNodesChange, onEdgesChange, connect, onInit, openNodeModalId, setOpenNodeModalId, traverseNodes });
 ```
 3. I discovered that the `nodes` were continuously updating when I was using the dev tools.
-![[Pasted image 20240304172625.png]]
+
+![c](../assets/Pasted%20image%2020240304172625.png)
+
 4. I compared the `nodes` content `json` in 'from' and 'to', they were the same, leading me to guess that *the reference might have changed*.
 
 5. Then, I looked for operations in `useStore` that could change the `node`, namely `onNodesChange`. I logged it and found that changes in `dimensions` caused the `nodes` to change.
-![[Pasted image 20240304172917.png]]
+![b](../assets/Pasted%20image%2020240304172917.png)
+
 6. The `onNodesChange` method is only used in the `Workbench` component.
 
 7. So, I debugged in `onNodesChange`, and through the call stack, I found that `updateNodeInternals` was consistently calling `RAF`, causing constant rendering.
-![[Pasted image 20240304172936.png]]
+![a](../assets/Pasted%20image%2020240304172936.png)
+
 8. I checked the [source code](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useUpdateNodeInternals.ts#L28) of `xyflow` and found that `updateNodeInternals` would call the reference of `updateNodeDimensions`. 
 
 9. Upon further investigation of `updateNodeDimensions`, I found that regardless of whether the `node` has actual changes, the `nodes` would eventually be updated.  
