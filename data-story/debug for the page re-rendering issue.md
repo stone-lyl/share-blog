@@ -8,7 +8,8 @@
 
 1. I used the `Profiler` in `React` dev tools and found that the `Workbench` component is constantly re-rendering. The `Profiler` indicated that this is due to the third hook (`useStore`) in the component changing
 
-![a](assets/Pasted%20image%2020240304171949.png)
+![a](../assets/Pasted%20image%2020240304171949.png)
+
 2. I suspected that some state in the `Workbench` was changing, so I added `useWhyDidYouUpdate` to investigate what was constantly updating. ([Refer to useWhyDidYouUpdate from ahooks](https://ahooks.js.org/hooks/use-why-did-you-update/))
 
 ```ts
