@@ -1,8 +1,8 @@
 ## problem
 
 - **reproduce**: Open the playground and add some nodes. After a while, the page will become increasingly slower, regardless of the operation you perform.
-- **video**:
-![d](../assets/before-performance-issue.mp4)
+- **PR**: https://github.com/ajthinking/data-story/pull/148
+
 
 
 ## How to debug a performance issue
@@ -41,4 +41,3 @@ Check out the code in the following link:
 - [nodeSettingsModal.tsx](https://github.com/ajthinking/data-story/pull/148/files#diff-7412d8e2510cfe1e26efe2ebd14ddce0921562bb598b34189e0af5a5516c0038)
 - [Workbench](https://github.com/ajthinking/data-story/pull/148/files#diff-fe13771085a0ed345d22c33230dca46c186ad01a0d5fe5e468b407f7a4ed9c11)
 
-PR:  https://github.com/ajthinking/data-story/pull/148/files#
