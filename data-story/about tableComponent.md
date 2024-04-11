@@ -57,11 +57,11 @@ export function useIntersectionObserver(callback: () => Promise<void>) {
 - To prevent ``loadTableData`` from being called multiple times due to re-binding with ``observer.observe(loaderRef.current);`` every time the ``state`` updates, we'll address this issue. 
 - everything was executed synchronously on the frontend, we didn't consider the sequence of asynchronous requests
 
-![before](../assets/Pasted%20image%20240411231800.png)
+![before](../assets/Pasted%20image%2020240411231800.png)
 
 **after**  implementing server-side pagination and the requests are asynchronous, needing to tackle duplicate requests and manage the order of requests. I'll also address the issue of repeatedly binding the sentinel event listener.
 
-![after](../assets/Pasted%20image%20240411231811.png)
+![after](../assets/Pasted%20image%2020240411231800.png)
 
 - implement a strategy for deduplicating data.
 -  We'll resolve the issue of incorrect request sequencing, such as the scenario ``requestA -> requestB -> responseB -> responseA``. 
