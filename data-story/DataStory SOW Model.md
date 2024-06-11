@@ -109,7 +109,7 @@ It creates a new O, which creates the data stream using the returned O of operat
 
 With the help of compose and delegate, it is possible to reuse stateless flow in the diagram:
 
-![before](../photo_6287140524691406705_y.jpg)
+![image](https://github.com/stone-lyl/share-blog/assets/20497176/772a33d3-76c7-4544-b73b-d5f4e22bbf5e)
 
 Since the reuse is based on reference, it is possible to make reference circles in the diagram, which may lead to infinite processing. 
 
